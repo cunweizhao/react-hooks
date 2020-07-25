@@ -5,6 +5,21 @@ import LikeButton from './components/LikeButton'
 import MoustTracker from "./components/MouseTracker";
 import DogShow from "./components/DogShow";
 import useMousePosition from "./hooks/useMousePosition";
+import useURLLoader from "./hooks/useURLLoader";
+
+
+
+const style = {
+    width:200
+}
+const DogShowWithHook = () =>{
+    const [data,loading] = useURLLoader('https://dog.ceo/api/breeds/image/random')
+    return (
+        <>
+        {loading ? <p>读取中</p> : <img src={data.message} style={style}/>}
+            </>
+    )
+}
 
 function App() {
     const position = useMousePosition()
