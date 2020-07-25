@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react'
+import useMousePosition from "../hooks/useMousePosition";
+
+
 
 const LikeButton = () =>{
+    const position = useMousePosition()
     const [like, setLike] = useState(0)
     const [on,setOn] = useState(true)
     //dom更新之后调用
@@ -9,6 +13,7 @@ const LikeButton = () =>{
     })
     return (
         <>
+            <p>{position.y}</p>
         <button onClick ={ () =>{setLike(like +1 )}}>
             {like} 点赞
         </button>
